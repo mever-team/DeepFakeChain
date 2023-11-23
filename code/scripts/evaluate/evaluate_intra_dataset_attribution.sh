@@ -1,6 +1,6 @@
 for quality in raw high low
 do
-    single model multiclass attribution
+    # single model multiclass attribution
     for i in {1..5}
     do
         python -m experiments.single_model.evaluate -d ff++${quality} -m test -g 1.3 -bs 512 -ot attribute -mn m_attribution_${i} -O intra_dataset_attribution $1

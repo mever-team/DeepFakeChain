@@ -8,14 +8,9 @@ __pycache__/
 *.pkl
 
 /code/inputs/index/
-
-/code/experiments/model_register.txt
-
-/code/experiments/single_model/models/
-!/code/experiments/single_model/models/.keep
-/code/outputs/
-!/code/outputs/.keep
+/code/datasets/
+!/code/datasets/.keep
 /code/models/
 !/code/models/.keep
-
-nohup.out
+/code/outputs/
+!/code/outputs/.keep

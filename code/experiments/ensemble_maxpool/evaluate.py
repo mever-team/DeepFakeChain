@@ -68,6 +68,3 @@ if args.output_filename:
                   args.mode,
                   ensemble_name,
                   acc)
-
-
-
