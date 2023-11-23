@@ -6,8 +6,8 @@ from torch.utils.tensorboard import SummaryWriter
 from ..utils import initialise_model, get_model_target_size
 from torchmetrics import Accuracy
 from copy import deepcopy
-from pathlib import Path
 from utils import read_csv
+from dirs import MODELS_DIR
 
 
 class Model(torch.nn.Module):
@@ -196,10 +196,10 @@ class Model(torch.nn.Module):
 
                 if i % log_interval == 0:
                     if logger is None:
-                        print(f"validating {100 * i / len(dl):.1f}% complete")
+                        print(f"evaluating {100 * i / len(dl):.1f}% complete")
                     else:
                         logger.log(
-                            f"validating {100 * i / len(dl):.1f}% complete")
+                            f"evaluating {100 * i / len(dl):.1f}% complete")
 
                 x, y = x.to(self.device), y.to(self.device)
 
@@ -227,13 +227,12 @@ class Model(torch.nn.Module):
                         break
 
             epoch_acc = acc.compute().cpu().item()
-            epoch_metrics = {metric.__class__.__name__: metric.compute().cpu()
-                             for metric in extra_metrics}
+            epoch_metrics = [metric.compute().cpu() for metric in extra_metrics]
 
             if logger is None:
-                print(f"validating 100% complete")
+                print(f"evaluating 100% complete")
             else:
-                logger.log(f"validating 100% complete")
+                logger.log(f"evaluating 100% complete")
 
             if len(epoch_metrics) == 0:
                 return epoch_loss, epoch_acc
@@ -248,7 +247,7 @@ class Model(torch.nn.Module):
     
     @classmethod
     def get_model_path(cls, model_name):
-        path = Path(__file__).parent / "models" / model_name
+        path = MODELS_DIR / model_name
         path.mkdir(exist_ok=True, parents=True)
         return path
 

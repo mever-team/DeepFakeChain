@@ -13,6 +13,9 @@ __pycache__/
 
 /code/experiments/single_model/models/
 !/code/experiments/single_model/models/.keep
-
+/code/outputs/
+!/code/outputs/.keep
+/code/models/
+!/code/models/.keep
 
 nohup.out

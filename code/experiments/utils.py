@@ -1,13 +1,13 @@
 from torch import nn
 from torchvision import models
-from pathlib import Path
 
 import random
 import numpy as np
 import torch
 import timm
 
-from dirs import BASE_DIR
+from dirs import MODELS_DIR, OUTPUTS_DIR
+from utils import write_csv
 
 
 def set_parameter_requires_grad(model, feature_extracting):
@@ -151,7 +151,7 @@ def register_model(model_name, args):
 
     args = args if isinstance(args, dict) else vars(args)
 
-    path = Path(__file__).parent / "model_register.txt"
+    path = MODELS_DIR / "register.txt"
     with open(path, "a", encoding="utf8") as f:
         f.write(f"MODEL {model_name}\n")
         for k, v in args.items():
@@ -167,4 +167,18 @@ def set_reproducible_seed(seed):
     torch.backends.cudnn.benchmark = False
 
 
+def get_balanced_accuracy(confusion_matrix):
+    p_correct = confusion_matrix.diag()
+    if len(p_correct) > 2:
+        # attribution
+        return (p_correct[0].item() + p_correct[1:].mean().item()) / 2
+    else:
+        # detect fake
+        return p_correct.mean().item()
 
+
+def store_results(filename, *args):
+    output_path = OUTPUTS_DIR / filename
+    write_csv(output_path, [list(args)], append=True)
+    
+    

@@ -21,8 +21,8 @@ def read_csv(path, delim="\t", types=None, with_headers=False):
         else:
             return rows
 
-def write_csv(path, rows, delim="\t", headers=None):
-    with open(path, "w", encoding="utf8") as f:
+def write_csv(path, rows, delim="\t", headers=None, append=False):
+    with open(path, "a" if append else "w", encoding="utf8") as f:
         if headers is not None:
             line = delim.join([str(header) for header in headers])
             f.write(line)

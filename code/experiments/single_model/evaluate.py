@@ -1,9 +1,6 @@
 from inputs import *
 from experiments.single_model.model import Model
-from pathlib import Path
-from sklearn.metrics import roc_auc_score, roc_curve
-from matplotlib import pyplot as plt
-from experiments.utils import get_model_target_size
+from experiments.utils import get_balanced_accuracy, store_results
 
 import argparse
 import torchmetrics as tm
@@ -25,6 +22,7 @@ parser.add_argument("-max", "--max-num-samples", type=int, default=None)
 parser.add_argument("-mn", "--model-name", type=str, default=None)
 ## other arguments
 parser.add_argument("-D", "--device", type=str, default="cuda:0")
+parser.add_argument("-O", "--output-filename", type=str, default=None)
 
 
 args = parser.parse_args()
@@ -50,12 +48,23 @@ dset = get_dataset(args.dataset,
                     max_num_samples=args.max_num_samples)
 dl = get_dataloader(dset, args.batch_size, balanced=False) # no need for balanced labels due to balanced accuracy
 
-metric_fns = [tm.ConfusionMatrix(task="multiclass", num_classes=model.num_classes, normalize='true')]
 
-loss, acc, metrics = model.evaluate(dl, extra_metrics=metric_fns, binarize_model=(args.output_type=="detect_fake")) 
+print(f"evaluating task {args.output_type} of model {args.model_name} on dataset {args.dataset}{('/'+args.mode) if args.mode else ''}")
+loss, _, metrics = model.evaluate(dl,
+                                  extra_metrics=[tm.ConfusionMatrix(task="multiclass", num_classes=model.num_classes, normalize='true')],
+                                  binarize_model=(args.output_type=="detect_fake"))
 
+
+acc = get_balanced_accuracy(metrics[0])
 print(f"\tloss = {loss}")
 print(f"\tacc  = {acc}")
-for name, metric in metrics.items():
-    print(f"{name} = {metric}")
+print()
+
+if args.output_filename:
+    store_results(args.output_filename,
+                  args.output_type+"_task",
+                  args.dataset,
+                  args.mode,
+                  args.model_name,
+                  acc)
 
