@@ -8,9 +8,9 @@ __pycache__/
 *.pkl
 
 code/inputs/index/
-code/datasets/
+code/datasets/*
 !code/datasets/.keep
-code/models/
+code/models/*
 !code/models/.keep
-code/outputs/
+code/outputs/*
 !code/outputs/.keep
