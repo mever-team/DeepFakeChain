@@ -7,13 +7,17 @@ from ..utils import initialise_model, get_model_target_size
 from torchmetrics import Accuracy
 from copy import deepcopy
 from pathlib import Path
+from utils import read_csv
 
 
 class Model(torch.nn.Module):
 
     @classmethod
-    def easy_load(cls, model_type, model_name, num_classes, device=None):
-        model = Model(model_type, num_classes, device)
+    def easy_load(cls, model_name, device=None):
+        
+        hyperparams = read_csv(cls.get_model_path(model_name) / "hyperparams")
+        hyperparams = {k:v for k, v in hyperparams}
+        model = Model( hyperparams["model_type"], int(hyperparams["num_labels"]), device)
         model.load(model_name)
         return model
 
@@ -54,7 +58,7 @@ class Model(torch.nn.Module):
         best_acc = 0.0
         best_model_wts = self.model.state_dict()
 
-        writer = SummaryWriter(self._get_model_path(model_save_name) / "runs")
+        writer = SummaryWriter(Model.get_model_path(model_save_name) / "runs")
 
         logger = self.get_logger(model_save_name, "train")
 
@@ -223,8 +227,8 @@ class Model(torch.nn.Module):
                         break
 
             epoch_acc = acc.compute().cpu().item()
-            epoch_metrics = [metric.compute().cpu()
-                             for metric in extra_metrics]
+            epoch_metrics = {metric.__class__.__name__: metric.compute().cpu()
+                             for metric in extra_metrics}
 
             if logger is None:
                 print(f"validating 100% complete")
@@ -241,23 +245,24 @@ class Model(torch.nn.Module):
         if softmax:
             y = torch.nn.functional.softmax(y, dim=1)
         return y
-
-    def _get_model_path(self, model_name):
+    
+    @classmethod
+    def get_model_path(cls, model_name):
         path = Path(__file__).parent / "models" / model_name
         path.mkdir(exist_ok=True, parents=True)
         return path
 
     def save(self, model_name):
-        path = self._get_model_path(model_name) / "model.pt"
+        path = Model.get_model_path(model_name) / "model.pt"
         torch.save(self.model.state_dict(), path)
 
     def load(self, model_name):
-        path = self._get_model_path(model_name) / "model.pt"
+        path = Model.get_model_path(model_name) / "model.pt"
         self.model.load_state_dict(torch.load(path, map_location=self.device))
 
     def get_logger(self, model_name, mode):
 
-        log_path = self._get_model_path(model_name) / "training_logs"
+        log_path = Model.get_model_path(model_name) / "training_logs"
         # clear logs
         open(log_path, "w").close()
 

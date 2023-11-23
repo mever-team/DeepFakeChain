@@ -1,6 +1,6 @@
 from inputs import *
 from .model import Model
-from utils import random_filename
+from utils import random_filename, write_csv, read_csv
 from ..utils import register_model, set_reproducible_seed, get_optimizer, get_scheduler, get_model_target_size
 
 import argparse
@@ -11,7 +11,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument("-d",   "--dataset")
 parser.add_argument("-g",   "--margin", type=float, default=1.3)
 parser.add_argument("-bs",  "--batch-size", type=int, default=64)
-parser.add_argument("-a",   "--augmentation", type=str, nargs="+", default=['selimsef', 299])
+parser.add_argument("-a",   "--augmentation", type=str, nargs="+", default=['selimsef'])
 parser.add_argument("-p",   "--preprocessing", type=str, nargs="+", default=['none'])
 parser.add_argument("-ot",  "--output-type", type=str, nargs="+", default=["attribute"])
 parser.add_argument("-c",   "--categories", type=str, nargs="+", default=None)
@@ -83,12 +83,12 @@ model.train(train_dl,
             scheduler=scheduler,
             eval_before_train=args.eval_before_train)
 
-path = model._get_model_path(model_name) / "hyperparams"
-with open(path, "w", encoding="utf8") as f:
-    for k, v in vars(args).items():
-        f.write(f"\t{str(k):<10}: {v}\n")
-    f.write("\n")
 
+path = model.get_model_path(model_name) / "hyperparams"
+
+hyperparams = list(vars(args).items())
+hyperparams.append(("num_labels", train_dset.num_labels))
+write_csv(path, hyperparams)
 register_model(model_name, args)
 
 

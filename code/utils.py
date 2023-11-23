@@ -16,7 +16,10 @@ def read_csv(path, delim="\t", types=None, with_headers=False):
             if types is not None:
                 row = [cast(item) for item, cast in zip(row, types)]
             rows.append(row)
-        return rows, headers
+        if with_headers:
+            return rows, headers
+        else:
+            return rows
 
 def write_csv(path, rows, delim="\t", headers=None):
     with open(path, "w", encoding="utf8") as f:
