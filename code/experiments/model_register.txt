@@ -1,0 +1,1169 @@
+MODEL m7
+	dataset   : ff++raw
+	margin    : 1.3
+	batch_size: 20
+	augmentation: ['simple']
+	categories: None
+	qualities : None
+	split     : [8.0, 1.0, 1.0]
+	model_name: ff++_alldetection
+	model_type: efficientnet
+	epochs    : 20
+	learning_rate: 0.001
+	retrain   : False
+	init_evaluation: False
+	device    : cuda:0
+
+
+MODEL m2_effv2
+	dataset   : ff++raw
+	margin    : 1.3
+	batch_size: 20
+	augmentation: ['simple']
+	categories: ['real', 'faceshifter']
+	qualities : None
+	split     : [8.0, 1.0, 1.0]
+	model_name: m2_effv2
+	model_type: efficientnet2
+	epochs    : 20
+	learning_rate: 0.001
+	retrain   : False
+	init_evaluation: False
+	device    : cuda:1
+
+MODEL m7_effv2
+	dataset   : ff++raw
+	margin    : 1.3
+	batch_size: 20
+	augmentation: ['simple']
+	categories: None
+	qualities : None
+	split     : [8.0, 1.0, 1.0]
+	model_name: m7_effv2
+	model_type: efficientnet2
+	epochs    : 20
+	learning_rate: 0.001
+	retrain   : False
+	init_evaluation: False
+	device    : cuda:1
+
+MODEL ff++raw_binary_noaug_wd0
+	dataset   : ff++raw
+	margin    : 1.3
+	batch_size: 55
+	augmentation: ['none']
+	preprocessing: ['none']
+	categories: None
+	qualities : None
+	split     : [8.0, 1.0, 1.0]
+	max_num_samples: None
+	model_name: ff++raw_binary_noaug_wd0
+	model_type: efficientnet
+	epochs    : 50
+	optimizer : ['adam', '0.001', '0']
+	scheduler : ['steplr', 20, 0.1]
+	retrain   : False
+	init_evaluation: False
+	seed      : 0
+	device    : cuda:1
+	train_loss: [0.0688211386325744, 0.046768587114030924, 0.04522029472402103, 0.041726333913402656, 0.041252056073155914, 0.03996917791564333, 0.04052832699132562, 0.03899700405614285]
+	train_acc : [0.968727171421051, 0.975050151348114, 0.9750854969024658, 0.9767370820045471, 0.9762297868728638, 0.9773386716842651, 0.9769729971885681, 0.9778459072113037]
+	train_conf: [array([[0.9770268 , 0.02297316],
+       [0.03969763, 0.96030235]], dtype=float32), array([[0.98057836, 0.01942161],
+       [0.0304355 , 0.9695645 ]], dtype=float32), array([[0.9825635, 0.0174365],
+       [0.0323713, 0.9676287]], dtype=float32), array([[0.98382854, 0.01617143],
+       [0.0304288 , 0.9695712 ]], dtype=float32), array([[0.9820809 , 0.01791912],
+       [0.02961356, 0.97038645]], dtype=float32), array([[0.98576194, 0.01423807],
+       [0.03104333, 0.96895665]], dtype=float32), array([[0.9808535 , 0.01914653],
+       [0.02692162, 0.97307837]], dtype=float32), array([[0.9844939 , 0.01550606],
+       [0.02885846, 0.9711415 ]], dtype=float32)]
+	val_loss  : [0.10419845661806262, 0.11206525112984256, 0.0864968030555198, 0.11493549039729047, 0.1187995239311864, 0.07631547955394827, 0.10722942399994405, 0.11169284195097537]
+	val_acc   : [0.9611416459083557, 0.9623951315879822, 0.9643235802650452, 0.9670234322547913, 0.9623951315879822, 0.9651914238929749, 0.9643235802650452, 0.9628772735595703]
+	val_conf  : [array([[0.96061313, 0.03938688],
+       [0.03833621, 0.9616638 ]], dtype=float32), array([[0.9705543 , 0.02944573],
+       [0.0457971 , 0.9542029 ]], dtype=float32), array([[9.9924839e-01, 7.5159717e-04],
+       [7.2489604e-02, 9.2751038e-01]], dtype=float32), array([[0.98390895, 0.01609105],
+       [0.0492891 , 0.9507109 ]], dtype=float32), array([[0.95571816, 0.04428186],
+       [0.03090593, 0.9690941 ]], dtype=float32), array([[0.9552412 , 0.04475877],
+       [0.02495201, 0.975048  ]], dtype=float32), array([[0.97546726, 0.02453271],
+       [0.04660936, 0.95339066]], dtype=float32), array([[0.98995554, 0.01004443],
+       [0.06411244, 0.9358876 ]], dtype=float32)]
+
+MODEL ff++raw_binary_noaug_wd01
+	dataset   : ff++raw
+	margin    : 1.3
+	batch_size: 55
+	augmentation: ['none']
+	preprocessing: ['none']
+	categories: None
+	qualities : None
+	split     : [8.0, 1.0, 1.0]
+	max_num_samples: None
+	model_name: ff++raw_binary_noaug_wd01
+	model_type: efficientnet
+	epochs    : 50
+	optimizer : ['adam', '0.001', '0.1']
+	scheduler : ['steplr', 20, 0.1]
+	retrain   : False
+	init_evaluation: False
+	seed      : 0
+	device    : cuda:1
+	train_loss: [0.24331048288021415, 0.19148823012985583, 0.20075089517550831, 0.3243030802903625, 0.3764479332319649, 0.39111108617946505, 0.3867713581533903, 0.3826999587964763]
+	train_acc : [0.9036805629730225, 0.9270968437194824, 0.931921660900116, 0.9232511520385742, 0.9036805629730225, 0.8906688690185547, 0.8880028128623962, 0.8886516690254211]
+	train_conf: [array([[0.9263032 , 0.07369678],
+       [0.11928307, 0.8807169 ]], dtype=float32), array([[0.9418536 , 0.05814642],
+       [0.08754613, 0.9124539 ]], dtype=float32), array([[0.944619  , 0.05538098],
+       [0.08073978, 0.9192602 ]], dtype=float32), array([[0.94571185, 0.05428813],
+       [0.09944502, 0.90055496]], dtype=float32), array([[0.93136907, 0.06863093],
+       [0.12397142, 0.8760286 ]], dtype=float32), array([[0.92530924, 0.07469076],
+       [0.14380193, 0.8561981 ]], dtype=float32), array([[0.92927796, 0.07072206],
+       [0.15342252, 0.84657747]], dtype=float32), array([[0.92888355, 0.07111644],
+       [0.15192153, 0.8480785 ]], dtype=float32)]
+	val_loss  : [0.9464929352992425, 1.0958198879761674, 0.4634193557280077, 0.48810916129874155, 0.702850610175461, 1.1389759952429117, 0.5362630156928267, 0.4797736869917974]
+	val_acc   : [0.5009160041809082, 0.5607945322990417, 0.7878700494766235, 0.8046475648880005, 0.4984090328216553, 0.5026516318321228, 0.744479775428772, 0.7997300028800964]
+	val_conf  : [array([[1.        , 0.        ],
+       [0.99214107, 0.00785892]], dtype=float32), array([[0.15742879, 0.8425712 ],
+       [0.0342029 , 0.9657971 ]], dtype=float32), array([[0.9960541 , 0.00394589],
+       [0.43157062, 0.5684294 ]], dtype=float32), array([[0.9564364 , 0.04356358],
+       [0.34199053, 0.65800947]], dtype=float32), array([[0.       , 1.       ],
+       [0.0015453, 0.9984547]], dtype=float32), array([[0.00813796, 0.99186206],
+       [0.0074856 , 0.9925144 ]], dtype=float32), array([[0.6832165 , 0.3167835 ],
+       [0.19541547, 0.8045845 ]], dtype=float32), array([[0.9028395 , 0.09716052],
+       [0.30304196, 0.696958  ]], dtype=float32)]
+
+MODEL ff++raw_binary_noaug_wd001
+	dataset   : ff++raw
+	margin    : 1.3
+	batch_size: 55
+	augmentation: ['none']
+	preprocessing: ['none']
+	categories: None
+	qualities : None
+	split     : [8.0, 1.0, 1.0]
+	max_num_samples: None
+	model_name: ff++raw_binary_noaug_wd001
+	model_type: efficientnet
+	epochs    : 50
+	optimizer : ['adam', '0.001', '0.01']
+	scheduler : ['steplr', 20, 0.1]
+	retrain   : False
+	init_evaluation: False
+	seed      : 0
+	device    : cuda:1
+	train_loss: [0.13976372409993618, 0.11903174306071519, 0.11873814126599873, 0.1250679340363322, 0.12875692671027178, 0.1255262615726888, 0.12595636805884247, 0.12342514785733844, 0.12335163701311157, 0.12460296156776328, 0.12602197017941022, 0.12396437448875836, 0.12672902807235792]
+	train_acc : [0.9451928734779358, 0.9551964402198792, 0.9559985995292664, 0.9575911164283752, 0.9556093215942383, 0.9583343267440796, 0.9577208757400513, 0.9582517147064209, 0.9587354063987732, 0.9582399725914001, 0.9584404826164246, 0.9579096436500549, 0.9573433995246887]
+	train_conf: [array([[0.9568638 , 0.04313615],
+       [0.06665399, 0.93334603]], dtype=float32), array([[0.96369106, 0.03630894],
+       [0.05323274, 0.9467673 ]], dtype=float32), array([[0.9658358 , 0.03416421],
+       [0.05381081, 0.94618917]], dtype=float32), array([[0.96967566, 0.03032437],
+       [0.05462005, 0.94538   ]], dtype=float32), array([[0.9664754 , 0.03352457],
+       [0.0552425 , 0.9447575 ]], dtype=float32), array([[0.96814173, 0.03185828],
+       [0.05142507, 0.9485749 ]], dtype=float32), array([[0.967312  , 0.03268805],
+       [0.05190508, 0.9480949 ]], dtype=float32), array([[0.96743727, 0.03256273],
+       [0.0510117 , 0.9489883 ]], dtype=float32), array([[0.9684982 , 0.03150183],
+       [0.05099517, 0.9490048 ]], dtype=float32), array([[0.9681884 , 0.03181157],
+       [0.05182232, 0.9481777 ]], dtype=float32), array([[0.96866554, 0.03133444],
+       [0.05169094, 0.94830906]], dtype=float32), array([[0.9682398 , 0.03176024],
+       [0.05244879, 0.9475512 ]], dtype=float32), array([[0.9675905 , 0.03240948],
+       [0.05290855, 0.94709146]], dtype=float32)]
+	val_loss  : [0.722840124810184, 0.24366458875950053, 0.2559290052879424, 0.38005234506079777, 0.17382148351697688, 0.28447538990744203, 0.15352507659958467, 0.37524478854956433, 0.15511922605296294, 0.23179875034346153, 0.1614643614640627, 0.3055761217597932, 0.14024480526882496]
+	val_acc   : [0.6583743095397949, 0.9029023051261902, 0.8968276977539062, 0.8150612115859985, 0.9331790804862976, 0.8993346691131592, 0.9356860518455505, 0.816314697265625, 0.9556455612182617, 0.9046379327774048, 0.9420499205589294, 0.8739755153656006, 0.9546813368797302]
+	val_conf  : [array([[0.314707  , 0.68529296],
+       [0.00210849, 0.9978915 ]], dtype=float32), array([[0.83602774, 0.16397229],
+       [0.02995169, 0.9700483 ]], dtype=float32), array([[0.9975573 , 0.00244269],
+       [0.20934838, 0.7906516 ]], dtype=float32), array([[0.646978  , 0.35302198],
+       [0.02255924, 0.9774408 ]], dtype=float32), array([[0.9039276 , 0.09607239],
+       [0.03747344, 0.96252656]], dtype=float32), array([[0.9939934 , 0.00600659],
+       [0.19443378, 0.8055662 ]], dtype=float32), array([[0.9001168 , 0.09988318],
+       [0.02941738, 0.9705826 ]], dtype=float32), array([[0.644775  , 0.35522503],
+       [0.01270697, 0.987293  ]], dtype=float32), array([[0.9660458 , 0.03395421],
+       [0.0546291 , 0.9453709 ]], dtype=float32), array([[0.8495099 , 0.1504901 ],
+       [0.03986068, 0.96013933]], dtype=float32), array([[0.93014205, 0.06985795],
+       [0.04625382, 0.9537462 ]], dtype=float32), array([[0.9986463, 0.0013537],
+       [0.25     , 0.75     ]], dtype=float32), array([[0.9568055 , 0.04319447],
+       [0.04746222, 0.9525378 ]], dtype=float32)]
+
+MODEL ff++raw_binary_noaug_wd0001
+	dataset   : ff++raw
+	margin    : 1.3
+	batch_size: 55
+	augmentation: ['none']
+	preprocessing: ['none']
+	categories: None
+	qualities : None
+	split     : [8.0, 1.0, 1.0]
+	max_num_samples: None
+	model_name: ff++raw_binary_noaug_wd0001
+	model_type: efficientnet
+	epochs    : 50
+	optimizer : ['adam', '0.001', '0.001']
+	scheduler : ['steplr', 20, 0.1]
+	retrain   : False
+	init_evaluation: False
+	seed      : 0
+	device    : cuda:1
+	train_loss: [0.09512237319722779, 0.07901776753681261, 0.07687333202588666, 0.07546908745479347, 0.07350713776662489, 0.07071292140229987, 0.06985514772688702, 0.0687296833977678, 0.06755295983001094]
+	train_acc : [0.9625928997993469, 0.9684204459190369, 0.9685384035110474, 0.9692816138267517, 0.9697062373161316, 0.9708741307258606, 0.970473051071167, 0.9714757800102234, 0.9715819358825684]
+	train_conf: [array([[0.9733736 , 0.02662639],
+       [0.04835029, 0.9516497 ]], dtype=float32), array([[0.9745624 , 0.02543758],
+       [0.03767421, 0.9623258 ]], dtype=float32), array([[0.97462493, 0.02537507],
+       [0.03753092, 0.9624691 ]], dtype=float32), array([[0.9762005 , 0.02379946],
+       [0.0377099 , 0.9622901 ]], dtype=float32), array([[0.977005  , 0.02299502],
+       [0.03758282, 0.9624172 ]], dtype=float32), array([[0.9786902 , 0.02130981],
+       [0.03690367, 0.9630963 ]], dtype=float32), array([[0.97776836, 0.02223164],
+       [0.03684882, 0.96315116]], dtype=float32), array([[0.97878486, 0.02121511],
+       [0.03589537, 0.96410465]], dtype=float32), array([[0.97762024, 0.02237977],
+       [0.03443646, 0.96556354]], dtype=float32)]
+	val_loss  : [0.1599364772281319, 0.11114622548064863, 0.11150477098291195, 0.09642301302245529, 0.08621978828752484, 0.09640168594738477, 0.093016166747523, 0.18482987052470282, 0.10727019824343857]
+	val_acc   : [0.9533314108848572, 0.9545848965644836, 0.9538134932518005, 0.9561276435852051, 0.9637450575828552, 0.9543920755386353, 0.9605631232261658, 0.9163050651550293, 0.9582489728927612]
+	val_conf  : [array([[0.9187039 , 0.08129608],
+       [0.01245927, 0.9875407 ]], dtype=float32), array([[0.98556584, 0.01443418],
+       [0.07652174, 0.92347825]], dtype=float32), array([[0.9714393 , 0.02856069],
+       [0.0647653 , 0.9352347 ]], dtype=float32), array([[0.9462323 , 0.05376766],
+       [0.0343128 , 0.9656872 ]], dtype=float32), array([[0.97978437, 0.02021563],
+       [0.05234692, 0.94765306]], dtype=float32), array([[0.93373376, 0.06626622],
+       [0.02514395, 0.974856  ]], dtype=float32), array([[0.96865267, 0.03134735],
+       [0.04737345, 0.9526265 ]], dtype=float32), array([[0.85512847, 0.14487155],
+       [0.02271852, 0.97728145]], dtype=float32), array([[0.97710514, 0.02289484],
+       [0.06037953, 0.9396205 ]], dtype=float32)]
+
+MODEL foo
+	dataset   : ff++high
+	margin    : 1.3
+	batch_size: 64
+	augmentation: ['none']
+	preprocessing: ['none']
+	output_type: ['detection']
+	categories: None
+	qualities : None
+	split     : None
+	max_num_samples: 10
+	model_name: foo
+	model_type: efficientnet
+	epochs    : 40
+	optimizer : ['adam', 0.001, 0.0005]
+	scheduler : ['steplr', 20, 0.1]
+	retrain   : False
+	init_evaluation: False
+	seed      : 0
+	device    : cpu
+
+MODEL foo
+	dataset   : ff++high
+	margin    : 1.3
+	batch_size: 64
+	augmentation: ['none']
+	preprocessing: ['none']
+	output_type: ['detection']
+	categories: None
+	qualities : None
+	split     : None
+	max_num_samples: 10
+	model_name: foo
+	model_type: efficientnet
+	epochs    : 40
+	optimizer : ['adam', 0.001, 0.0005]
+	scheduler : ['steplr', 20, 0.1]
+	retrain   : False
+	init_evaluation: False
+	seed      : 0
+	device    : cpu
+
+MODEL foo
+	dataset   : ff++high
+	margin    : 1.3
+	batch_size: 64
+	augmentation: ['none']
+	preprocessing: ['none']
+	output_type: ['detection']
+	categories: None
+	qualities : None
+	split     : None
+	max_num_samples: 10
+	model_name: foo
+	model_type: efficientnet
+	epochs    : 40
+	optimizer : ['adam', 0.001, 0.0005]
+	scheduler : ['steplr', 20, 0.1]
+	retrain   : False
+	init_evaluation: False
+	seed      : 0
+	device    : cpu
+
+MODEL foo
+	dataset   : ff++high
+	margin    : 1.3
+	batch_size: 64
+	augmentation: ['none']
+	preprocessing: ['none']
+	output_type: ['detection']
+	categories: None
+	qualities : None
+	split     : None
+	max_num_samples: 10
+	model_name: foo
+	model_type: efficientnet
+	epochs    : 40
+	optimizer : ['adam', 0.001, 0.0005]
+	scheduler : ['steplr', 20, 0.1]
+	retrain   : False
+	init_evaluation: False
+	seed      : 0
+	device    : cpu
+
+MODEL foo
+	dataset   : ff++high
+	margin    : 1.3
+	batch_size: 64
+	augmentation: ['none']
+	preprocessing: ['none']
+	output_type: ['detection']
+	categories: None
+	qualities : None
+	split     : None
+	max_num_samples: 10
+	model_name: foo
+	model_type: efficientnet
+	epochs    : 40
+	optimizer : ['adam', 0.001, 0.0005]
+	scheduler : ['steplr', 20, 0.1]
+	retrain   : False
+	init_evaluation: False
+	seed      : 0
+	device    : cpu
+
+MODEL m_onevsrest_1
+	dataset   : ff++raw
+	margin    : 1.3
+	batch_size: 55
+	augmentation: ['selimsef', '224']
+	preprocessing: ['none']
+	output_type: ['onevsrest', '1']
+	categories: None
+	qualities : None
+	split     : None
+	max_num_samples: None
+	model_name: m_onevsrest_1
+	model_type: efficientnetb0
+	epochs    : 50
+	optimizer : ['adam', 0.001, 0.0005]
+	scheduler : ['steplr', 20, 0.1]
+	retrain   : False
+	init_evaluation: False
+	seed      : 0
+	device    : cuda:0
+
+MODEL m_onevsrest_2
+	dataset   : ff++raw
+	margin    : 1.3
+	batch_size: 55
+	augmentation: ['selimsef', '224']
+	preprocessing: ['none']
+	output_type: ['onevsrest', '2']
+	categories: None
+	qualities : None
+	split     : None
+	max_num_samples: None
+	model_name: m_onevsrest_2
+	model_type: efficientnetb0
+	epochs    : 50
+	optimizer : ['adam', 0.001, 0.0005]
+	scheduler : ['steplr', 20, 0.1]
+	retrain   : False
+	init_evaluation: False
+	seed      : 0
+	device    : cuda:0
+
+MODEL m_onevsrest_3
+	dataset   : ff++raw
+	margin    : 1.3
+	batch_size: 55
+	augmentation: ['selimsef', '224']
+	preprocessing: ['none']
+	output_type: ['onevsrest', '3']
+	categories: None
+	qualities : None
+	split     : None
+	max_num_samples: None
+	model_name: m_onevsrest_3
+	model_type: efficientnetb0
+	epochs    : 50
+	optimizer : ['adam', 0.001, 0.0005]
+	scheduler : ['steplr', 20, 0.1]
+	retrain   : False
+	init_evaluation: False
+	seed      : 0
+	device    : cuda:0
+
+MODEL m_onevsrest_4
+	dataset   : ff++raw
+	margin    : 1.3
+	batch_size: 55
+	augmentation: ['selimsef', '224']
+	preprocessing: ['none']
+	output_type: ['onevsrest', '4']
+	categories: None
+	qualities : None
+	split     : None
+	max_num_samples: None
+	model_name: m_onevsrest_4
+	model_type: efficientnetb0
+	epochs    : 50
+	optimizer : ['adam', 0.001, 0.0005]
+	scheduler : ['steplr', 20, 0.1]
+	retrain   : False
+	init_evaluation: False
+	seed      : 0
+	device    : cuda:0
+
+MODEL m_onevsrest_5
+	dataset   : ff++raw
+	margin    : 1.3
+	batch_size: 55
+	augmentation: ['selimsef', '224']
+	preprocessing: ['none']
+	output_type: ['onevsrest', '5']
+	categories: None
+	qualities : None
+	split     : None
+	max_num_samples: None
+	model_name: m_onevsrest_5
+	model_type: efficientnetb0
+	epochs    : 50
+	optimizer : ['adam', 0.001, 0.0005]
+	scheduler : ['steplr', 20, 0.1]
+	retrain   : False
+	init_evaluation: False
+	seed      : 0
+	device    : cuda:0
+
+MODEL m_onevsreal_1
+	dataset   : ff++raw
+	margin    : 1.3
+	batch_size: 55
+	augmentation: ['selimsef', '224']
+	preprocessing: ['none']
+	output_type: ['detection']
+	categories: ['real', 'deepfakes']
+	qualities : None
+	split     : None
+	max_num_samples: None
+	model_name: m_onevsreal_1
+	model_type: efficientnetb0
+	epochs    : 50
+	optimizer : ['adam', 0.001, 0.0005]
+	scheduler : ['steplr', 20, 0.1]
+	retrain   : False
+	init_evaluation: False
+	seed      : 0
+	device    : cuda:0
+
+MODEL m_onevsreal_2
+	dataset   : ff++raw
+	margin    : 1.3
+	batch_size: 55
+	augmentation: ['selimsef', '224']
+	preprocessing: ['none']
+	output_type: ['detection']
+	categories: ['real', 'faceshifter']
+	qualities : None
+	split     : None
+	max_num_samples: None
+	model_name: m_onevsreal_2
+	model_type: efficientnetb0
+	epochs    : 50
+	optimizer : ['adam', 0.001, 0.0005]
+	scheduler : ['steplr', 20, 0.1]
+	retrain   : False
+	init_evaluation: False
+	seed      : 0
+	device    : cuda:0
+
+MODEL m_onevsreal_3
+	dataset   : ff++raw
+	margin    : 1.3
+	batch_size: 55
+	augmentation: ['selimsef', '224']
+	preprocessing: ['none']
+	output_type: ['detection']
+	categories: ['real', 'neuraltextures']
+	qualities : None
+	split     : None
+	max_num_samples: None
+	model_name: m_onevsreal_3
+	model_type: efficientnetb0
+	epochs    : 50
+	optimizer : ['adam', 0.001, 0.0005]
+	scheduler : ['steplr', 20, 0.1]
+	retrain   : False
+	init_evaluation: False
+	seed      : 0
+	device    : cuda:0
+
+MODEL m_onevsreal_4
+	dataset   : ff++raw
+	margin    : 1.3
+	batch_size: 55
+	augmentation: ['selimsef', '224']
+	preprocessing: ['none']
+	output_type: ['detection']
+	categories: ['real', 'faceswap']
+	qualities : None
+	split     : None
+	max_num_samples: None
+	model_name: m_onevsreal_4
+	model_type: efficientnetb0
+	epochs    : 50
+	optimizer : ['adam', 0.001, 0.0005]
+	scheduler : ['steplr', 20, 0.1]
+	retrain   : False
+	init_evaluation: False
+	seed      : 0
+	device    : cuda:0
+
+MODEL m_onevsreal_5
+	dataset   : ff++raw
+	margin    : 1.3
+	batch_size: 55
+	augmentation: ['selimsef', '224']
+	preprocessing: ['none']
+	output_type: ['detection']
+	categories: ['real', 'face2face']
+	qualities : None
+	split     : None
+	max_num_samples: None
+	model_name: m_onevsreal_5
+	model_type: efficientnetb0
+	epochs    : 50
+	optimizer : ['adam', 0.001, 0.0005]
+	scheduler : ['steplr', 20, 0.1]
+	retrain   : False
+	init_evaluation: False
+	seed      : 0
+	device    : cuda:0
+
+MODEL m_detectiont_1
+	dataset   : ff++raw
+	margin    : 1.3
+	batch_size: 55
+	augmentation: ['selimsef', '224']
+	preprocessing: ['none']
+	output_type: ['detection']
+	categories: None
+	qualities : None
+	split     : None
+	max_num_samples: None
+	model_name: m_detectiont_1
+	model_type: efficientnetb0
+	epochs    : 50
+	optimizer : ['adam', 0.001, 0.0005]
+	scheduler : ['steplr', 20, 0.1]
+	retrain   : False
+	init_evaluation: False
+	seed      : 0
+	device    : cuda:0
+
+MODEL m_detectiont_2
+	dataset   : ff++raw
+	margin    : 1.3
+	batch_size: 55
+	augmentation: ['selimsef', '224']
+	preprocessing: ['none']
+	output_type: ['detection']
+	categories: None
+	qualities : None
+	split     : None
+	max_num_samples: None
+	model_name: m_detectiont_2
+	model_type: efficientnetb0
+	epochs    : 50
+	optimizer : ['adam', 0.001, 0.0005]
+	scheduler : ['steplr', 20, 0.1]
+	retrain   : False
+	init_evaluation: False
+	seed      : 1
+	device    : cuda:0
+
+MODEL m_detectiont_3
+	dataset   : ff++raw
+	margin    : 1.3
+	batch_size: 55
+	augmentation: ['selimsef', '224']
+	preprocessing: ['none']
+	output_type: ['detection']
+	categories: None
+	qualities : None
+	split     : None
+	max_num_samples: None
+	model_name: m_detectiont_3
+	model_type: efficientnetb0
+	epochs    : 50
+	optimizer : ['adam', 0.001, 0.0005]
+	scheduler : ['steplr', 20, 0.1]
+	retrain   : False
+	init_evaluation: False
+	seed      : 2
+	device    : cuda:0
+
+MODEL m_detectiont_4
+	dataset   : ff++raw
+	margin    : 1.3
+	batch_size: 55
+	augmentation: ['selimsef', '224']
+	preprocessing: ['none']
+	output_type: ['detection']
+	categories: None
+	qualities : None
+	split     : None
+	max_num_samples: None
+	model_name: m_detectiont_4
+	model_type: efficientnetb0
+	epochs    : 50
+	optimizer : ['adam', 0.001, 0.0005]
+	scheduler : ['steplr', 20, 0.1]
+	retrain   : False
+	init_evaluation: False
+	seed      : 3
+	device    : cuda:0
+
+MODEL m_detectiont_5
+	dataset   : ff++raw
+	margin    : 1.3
+	batch_size: 55
+	augmentation: ['selimsef', '224']
+	preprocessing: ['none']
+	output_type: ['detection']
+	categories: None
+	qualities : None
+	split     : None
+	max_num_samples: None
+	model_name: m_detectiont_5
+	model_type: efficientnetb0
+	epochs    : 50
+	optimizer : ['adam', 0.001, 0.0005]
+	scheduler : ['steplr', 20, 0.1]
+	retrain   : False
+	init_evaluation: False
+	seed      : 4
+	device    : cuda:0
+
+MODEL m_attribution_1
+	dataset   : ff++raw
+	margin    : 1.3
+	batch_size: 55
+	augmentation: ['selimsef', '224']
+	preprocessing: ['none']
+	output_type: ['attribution']
+	categories: None
+	qualities : None
+	split     : None
+	max_num_samples: None
+	model_name: m_attribution_1
+	model_type: efficientnetb0
+	epochs    : 50
+	optimizer : ['adam', 0.001, 0.0005]
+	scheduler : ['steplr', 20, 0.1]
+	retrain   : False
+	init_evaluation: False
+	seed      : 0
+	device    : cuda:0
+
+MODEL m_attribution_2
+	dataset   : ff++raw
+	margin    : 1.3
+	batch_size: 55
+	augmentation: ['selimsef', '224']
+	preprocessing: ['none']
+	output_type: ['attribution']
+	categories: None
+	qualities : None
+	split     : None
+	max_num_samples: None
+	model_name: m_attribution_2
+	model_type: efficientnetb0
+	epochs    : 50
+	optimizer : ['adam', 0.001, 0.0005]
+	scheduler : ['steplr', 20, 0.1]
+	retrain   : False
+	init_evaluation: False
+	seed      : 1
+	device    : cuda:0
+
+MODEL m_attribution_3
+	dataset   : ff++raw
+	margin    : 1.3
+	batch_size: 55
+	augmentation: ['selimsef', '224']
+	preprocessing: ['none']
+	output_type: ['attribution']
+	categories: None
+	qualities : None
+	split     : None
+	max_num_samples: None
+	model_name: m_attribution_3
+	model_type: efficientnetb0
+	epochs    : 50
+	optimizer : ['adam', 0.001, 0.0005]
+	scheduler : ['steplr', 20, 0.1]
+	retrain   : False
+	init_evaluation: False
+	seed      : 2
+	device    : cuda:0
+
+MODEL m_attribution_4
+	dataset   : ff++raw
+	margin    : 1.3
+	batch_size: 55
+	augmentation: ['selimsef', '224']
+	preprocessing: ['none']
+	output_type: ['attribution']
+	categories: None
+	qualities : None
+	split     : None
+	max_num_samples: None
+	model_name: m_attribution_4
+	model_type: efficientnetb0
+	epochs    : 50
+	optimizer : ['adam', 0.001, 0.0005]
+	scheduler : ['steplr', 20, 0.1]
+	retrain   : False
+	init_evaluation: False
+	seed      : 3
+	device    : cuda:0
+
+MODEL m_attribution_5
+	dataset   : ff++raw
+	margin    : 1.3
+	batch_size: 55
+	augmentation: ['selimsef', '224']
+	preprocessing: ['none']
+	output_type: ['attribution']
+	categories: None
+	qualities : None
+	split     : None
+	max_num_samples: None
+	model_name: m_attribution_5
+	model_type: efficientnetb0
+	epochs    : 50
+	optimizer : ['adam', 0.001, 0.0005]
+	scheduler : ['steplr', 20, 0.1]
+	retrain   : False
+	init_evaluation: False
+	seed      : 4
+	device    : cuda:0
+
+MODEL m_detection_1
+	dataset   : ff++raw
+	margin    : 1.3
+	batch_size: 55
+	augmentation: ['selimsef', '224']
+	preprocessing: ['none']
+	output_type: ['detection']
+	categories: None
+	qualities : None
+	split     : None
+	max_num_samples: None
+	model_name: m_detection_1
+	model_type: efficientnetb0
+	epochs    : 50
+	optimizer : ['adam', 0.001, 0.0005]
+	scheduler : ['steplr', 20, 0.1]
+	retrain   : False
+	init_evaluation: False
+	seed      : 0
+	device    : cuda:0
+
+MODEL m_detection_2
+	dataset   : ff++raw
+	margin    : 1.3
+	batch_size: 55
+	augmentation: ['selimsef', '224']
+	preprocessing: ['none']
+	output_type: ['detection']
+	categories: None
+	qualities : None
+	split     : None
+	max_num_samples: None
+	model_name: m_detection_2
+	model_type: efficientnetb0
+	epochs    : 50
+	optimizer : ['adam', 0.001, 0.0005]
+	scheduler : ['steplr', 20, 0.1]
+	retrain   : False
+	init_evaluation: False
+	seed      : 1
+	device    : cuda:0
+
+MODEL m_detection_3
+	dataset   : ff++raw
+	margin    : 1.3
+	batch_size: 55
+	augmentation: ['selimsef', '224']
+	preprocessing: ['none']
+	output_type: ['detection']
+	categories: None
+	qualities : None
+	split     : None
+	max_num_samples: None
+	model_name: m_detection_3
+	model_type: efficientnetb0
+	epochs    : 50
+	optimizer : ['adam', 0.001, 0.0005]
+	scheduler : ['steplr', 20, 0.1]
+	retrain   : False
+	init_evaluation: False
+	seed      : 2
+	device    : cuda:0
+
+MODEL m_detection_4
+	dataset   : ff++raw
+	margin    : 1.3
+	batch_size: 55
+	augmentation: ['selimsef', '224']
+	preprocessing: ['none']
+	output_type: ['detection']
+	categories: None
+	qualities : None
+	split     : None
+	max_num_samples: None
+	model_name: m_detection_4
+	model_type: efficientnetb0
+	epochs    : 50
+	optimizer : ['adam', 0.001, 0.0005]
+	scheduler : ['steplr', 20, 0.1]
+	retrain   : False
+	init_evaluation: False
+	seed      : 3
+	device    : cuda:0
+
+MODEL m_detection_5
+	dataset   : ff++raw
+	margin    : 1.3
+	batch_size: 55
+	augmentation: ['selimsef', '224']
+	preprocessing: ['none']
+	output_type: ['detection']
+	categories: None
+	qualities : None
+	split     : None
+	max_num_samples: None
+	model_name: m_detection_5
+	model_type: efficientnetb0
+	epochs    : 50
+	optimizer : ['adam', 0.001, 0.0005]
+	scheduler : ['steplr', 20, 0.1]
+	retrain   : False
+	init_evaluation: False
+	seed      : 4
+	device    : cuda:0
+
+MODEL m_onevsreal_1
+	dataset   : ff++raw
+	margin    : 1.3
+	batch_size: 55
+	augmentation: ['selimsef', '224']
+	preprocessing: ['none']
+	output_type: ['detection']
+	categories: ['real', 'deepfakes']
+	qualities : None
+	split     : None
+	max_num_samples: None
+	model_name: m_onevsreal_1
+	model_type: efficientnetb0
+	epochs    : 50
+	optimizer : ['adam', 0.001, 0.0005]
+	scheduler : ['steplr', 20, 0.1]
+	retrain   : False
+	init_evaluation: False
+	seed      : 0
+	device    : cuda:0
+
+MODEL m_onevsreal_2
+	dataset   : ff++raw
+	margin    : 1.3
+	batch_size: 55
+	augmentation: ['selimsef', '224']
+	preprocessing: ['none']
+	output_type: ['detection']
+	categories: ['real', 'faceshifter']
+	qualities : None
+	split     : None
+	max_num_samples: None
+	model_name: m_onevsreal_2
+	model_type: efficientnetb0
+	epochs    : 50
+	optimizer : ['adam', 0.001, 0.0005]
+	scheduler : ['steplr', 20, 0.1]
+	retrain   : False
+	init_evaluation: False
+	seed      : 0
+	device    : cuda:0
+
+MODEL m_onevsreal_3
+	dataset   : ff++raw
+	margin    : 1.3
+	batch_size: 55
+	augmentation: ['selimsef', '224']
+	preprocessing: ['none']
+	output_type: ['detection']
+	categories: ['real', 'neuraltextures']
+	qualities : None
+	split     : None
+	max_num_samples: None
+	model_name: m_onevsreal_3
+	model_type: efficientnetb0
+	epochs    : 50
+	optimizer : ['adam', 0.001, 0.0005]
+	scheduler : ['steplr', 20, 0.1]
+	retrain   : False
+	init_evaluation: False
+	seed      : 0
+	device    : cuda:0
+
+MODEL m_onevsreal_4
+	dataset   : ff++raw
+	margin    : 1.3
+	batch_size: 55
+	augmentation: ['selimsef', '224']
+	preprocessing: ['none']
+	output_type: ['detection']
+	categories: ['real', 'faceswap']
+	qualities : None
+	split     : None
+	max_num_samples: None
+	model_name: m_onevsreal_4
+	model_type: efficientnetb0
+	epochs    : 50
+	optimizer : ['adam', 0.001, 0.0005]
+	scheduler : ['steplr', 20, 0.1]
+	retrain   : False
+	init_evaluation: False
+	seed      : 0
+	device    : cuda:0
+
+MODEL m_onevsreal_5
+	dataset   : ff++raw
+	margin    : 1.3
+	batch_size: 55
+	augmentation: ['selimsef', '224']
+	preprocessing: ['none']
+	output_type: ['detection']
+	categories: ['real', 'face2face']
+	qualities : None
+	split     : None
+	max_num_samples: None
+	model_name: m_onevsreal_5
+	model_type: efficientnetb0
+	epochs    : 50
+	optimizer : ['adam', 0.001, 0.0005]
+	scheduler : ['steplr', 20, 0.1]
+	retrain   : False
+	init_evaluation: False
+	seed      : 0
+	device    : cuda:0
+
+MODEL m_onevsrest_1
+	dataset   : ff++raw
+	margin    : 1.3
+	batch_size: 55
+	augmentation: ['selimsef', '224']
+	preprocessing: ['none']
+	output_type: ['onevsrest', '1']
+	categories: None
+	qualities : None
+	split     : None
+	max_num_samples: None
+	model_name: m_onevsrest_1
+	model_type: efficientnetb0
+	epochs    : 50
+	optimizer : ['adam', 0.001, 0.0005]
+	scheduler : ['steplr', 20, 0.1]
+	retrain   : False
+	init_evaluation: False
+	seed      : 0
+	device    : cuda:0
+
+MODEL m_onevsrest_2
+	dataset   : ff++raw
+	margin    : 1.3
+	batch_size: 55
+	augmentation: ['selimsef', '224']
+	preprocessing: ['none']
+	output_type: ['onevsrest', '2']
+	categories: None
+	qualities : None
+	split     : None
+	max_num_samples: None
+	model_name: m_onevsrest_2
+	model_type: efficientnetb0
+	epochs    : 50
+	optimizer : ['adam', 0.001, 0.0005]
+	scheduler : ['steplr', 20, 0.1]
+	retrain   : False
+	init_evaluation: False
+	seed      : 0
+	device    : cuda:0
+
+MODEL m_onevsrest_3
+	dataset   : ff++raw
+	margin    : 1.3
+	batch_size: 55
+	augmentation: ['selimsef', '224']
+	preprocessing: ['none']
+	output_type: ['onevsrest', '3']
+	categories: None
+	qualities : None
+	split     : None
+	max_num_samples: None
+	model_name: m_onevsrest_3
+	model_type: efficientnetb0
+	epochs    : 50
+	optimizer : ['adam', 0.001, 0.0005]
+	scheduler : ['steplr', 20, 0.1]
+	retrain   : False
+	init_evaluation: False
+	seed      : 0
+	device    : cuda:0
+
+MODEL m_onevsrest_4
+	dataset   : ff++raw
+	margin    : 1.3
+	batch_size: 55
+	augmentation: ['selimsef', '224']
+	preprocessing: ['none']
+	output_type: ['onevsrest', '4']
+	categories: None
+	qualities : None
+	split     : None
+	max_num_samples: None
+	model_name: m_onevsrest_4
+	model_type: efficientnetb0
+	epochs    : 50
+	optimizer : ['adam', 0.001, 0.0005]
+	scheduler : ['steplr', 20, 0.1]
+	retrain   : False
+	init_evaluation: False
+	seed      : 0
+	device    : cuda:0
+
+MODEL m_onevsrest_5
+	dataset   : ff++raw
+	margin    : 1.3
+	batch_size: 55
+	augmentation: ['selimsef', '224']
+	preprocessing: ['none']
+	output_type: ['onevsrest', '5']
+	categories: None
+	qualities : None
+	split     : None
+	max_num_samples: None
+	model_name: m_onevsrest_5
+	model_type: efficientnetb0
+	epochs    : 50
+	optimizer : ['adam', 0.001, 0.0005]
+	scheduler : ['steplr', 20, 0.1]
+	retrain   : False
+	init_evaluation: False
+	seed      : 0
+	device    : cuda:0
+
+MODEL test
+	dataset   : ff++raw
+	margin    : 1.3
+	batch_size: 55
+	augmentation: ['selimsef']
+	preprocessing: ['none']
+	output_type: ['attribute']
+	categories: None
+	qualities : None
+	split     : None
+	max_num_samples: 300
+	model_name: test
+	model_type: efficientnetv1b0
+	epochs    : 2
+	optimizer : ['adam', 0.001, 0.0005]
+	scheduler : ['steplr', 20, 0.1]
+	eval_before_train: False
+	seed      : 0
+	device    : cuda:0
+
+MODEL 421e4ed8-3df7-4c9a-be5a-5084711fb93e
+	dataset   : ff++raw
+	margin    : 1.3
+	batch_size: 55
+	augmentation: ['selimsef']
+	preprocessing: ['none']
+	output_type: ['attribute']
+	categories: None
+	qualities : None
+	split     : None
+	max_num_samples: 300
+	model_name: None
+	model_type: squeezenet
+	epochs    : 2
+	optimizer : ['adam', 0.001, 0.0005]
+	scheduler : ['steplr', 20, 0.1]
+	eval_before_train: False
+	seed      : 0
+	device    : cuda:0
+
+MODEL test
+	dataset   : ff++raw
+	margin    : 1.3
+	batch_size: 55
+	augmentation: ['selimsef']
+	preprocessing: ['none']
+	output_type: ['detect_fake']
+	categories: None
+	qualities : None
+	split     : None
+	max_num_samples: 300
+	model_name: test
+	model_type: densenet
+	epochs    : 2
+	optimizer : ['adam', 0.001, 0.0005]
+	scheduler : ['steplr', 20, 0.1]
+	eval_before_train: False
+	seed      : 2
+	device    : cuda:0
+
+MODEL test
+	dataset   : ff++raw
+	margin    : 1.3
+	batch_size: 55
+	augmentation: ['selimsef']
+	preprocessing: ['none']
+	output_type: ['detect_fake']
+	categories: ['real', 'faceswap']
+	qualities : None
+	split     : None
+	max_num_samples: 300
+	model_name: test
+	model_type: efficientnetv1b0
+	epochs    : 2
+	optimizer : ['adam', 0.001, 0.0005]
+	scheduler : ['steplr', 20, 0.1]
+	eval_before_train: False
+	seed      : 0
+	device    : cuda:0
+
+MODEL test
+	dataset   : ff++raw
+	margin    : 1.3
+	batch_size: 55
+	augmentation: ['selimsef']
+	preprocessing: ['none']
+	output_type: ['detect_category', '5']
+	categories: None
+	qualities : None
+	split     : None
+	max_num_samples: 300
+	model_name: test
+	model_type: efficientnetv1b0
+	epochs    : 2
+	optimizer : ['adam', 0.001, 0.0005]
+	scheduler : ['steplr', 20, 0.1]
+	eval_before_train: False
+	seed      : 0
+	device    : cuda:0
+
