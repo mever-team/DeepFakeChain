@@ -9,7 +9,7 @@ The DeepFakeChain project addresses both points. First, it seeks to develop new 
 The DeepFakeChain project ran for 9 months, from August 2022 to April 2023. It has produced 4 deliverables, the 4th of which is a scientific publication describing the developed algorithms for deepfake detection. All deliverables and the code supporting the aforementioned publication can be found in this repository.
 
 
-# File structure
+### File structure
 
 [`deliverables`](https://github.com/mever-team/DeepFakeChain/tree/main/deliverables) contains the deliverables produced during the project's duration.
 
