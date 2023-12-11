@@ -11,7 +11,7 @@ Further details can be found in the paper.
 
 The code has the following structure:
 
-  **`datasets`**: contains the datasets used for training and evaluation. In our paper, we consider *FaceForensics++*  for training and testing, as well as *CelebDF*, *DFDCpreview*, *DFDC*, and *OpenForensics* for cross-domain evaluation. For the generation scripts to work, the datasets must be downloaded and the the frames must be sampled from the video sources (PENDING: include code for frame sampling).
+  **`datasets`**: contains the datasets used for training and evaluation. In our paper, we consider *FaceForensics++*  for training and testing, as well as *CelebDF*, *DFDCpreview*, *DFDC*, and *OpenForensics* for cross-domain evaluation. The datasets must be downloaded and preprocessed before running the model training and evaluation scripts. Specific instructions for each dataset can be found in the respective folder.
   
 **`inputs`**: contains code for handling different datasets. The `sources.py` generates the image paths and labels for each dataset, while the `datasets.py`  encapsulates all data in the ImagePathDataset (a PyTorch Dataset module), which allows handling all datasets uniformly.
 
@@ -19,7 +19,7 @@ The code has the following structure:
 
  **`models`**: contains the trained model in .pt form, along with hyperparameters.
 
- **`scripts`**: contains the scripts for generating the results of our paper.
- 
+ **`scripts`**: contains the scripts for dataset preprocessing, model training, and generating the results of our paper. **All scripts must be executed from the [code](https://github.com/mever-team/DeepFakeChain/tree/main/code) directory.**
+
 **`outputs`**: stores the results of the scripts as text files.
 
