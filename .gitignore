@@ -9,7 +9,7 @@ __pycache__/
 
 code/inputs/index/
 code/datasets/*/*
-!code/datasets/OpenForensics/preprocess.py
+!code/datasets/*/preprocess.py
 code/models/*
 !code/models/.keep
 code/outputs/*
