@@ -82,7 +82,7 @@ class FaceForensics:
                 df.to_pickle(df_path)
             
             self.df = pd.read_pickle(df_path)
-            self.df = self.df.dropna(subset=["path"]) # SHOULD NOT NE NEEDED BUT SOME VIDEO PATHS WERE EMPTY
+            self.df = self.df.dropna(subset=["path"]) # SHOULD NOT BE NEEDED BUT SOME VIDEO PATHS WERE EMPTY
             
             if categories is not None:
                 self.filter_categories(categories)
@@ -241,15 +241,14 @@ class OpenForensics:
         
         assert mode in ("train", "val", "test"), f"mode must be in 'train', 'val', 'test', received '{mode}'"
 
-        if not small_margin:
-            raise Exception("OpenForensics is not currently processed for large margin")
+        margin = "1_3" if small_margin else "2"
         
         if mode == "train":
-            dset_path = DATASETS_DIR / "OpenForensics/Train_faces_1_3"
+            dset_path = DATASETS_DIR / f"openforensics/Train_faces_{margin}"
         elif mode == "val":
-            dset_path = DATASETS_DIR / "OpenForensics/Val_faces_1_3"
+            dset_path = DATASETS_DIR / f"openforensics/Val_faces_{margin}"
         elif mode == "test":
-            dset_path = DATASETS_DIR / "OpenForensics/Test-Dev_faces_1_3"
+            dset_path = DATASETS_DIR / f"openforensics/Test-Dev_faces_{margin}"
         
         self.data = []
         categories = categories or self.categories
