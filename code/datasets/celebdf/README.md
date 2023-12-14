@@ -3,5 +3,5 @@
 ### Instructions for preprocessing
 
 - Download the dataset
-- Run [preprocess script](https://github.com/mever-team/DeepFakeChain/blob/main/code/scripts/preprocess/preprocess_celebdf.sh) from [code](https://github.com/mever-team/DeepFakeChain/tree/main/code) passing the dataset's path as argument
+- Run the [preprocess script](https://github.com/mever-team/DeepFakeChain/blob/main/code/scripts/preprocess/preprocess_celebdf.sh) from the [code](https://github.com/mever-team/DeepFakeChain/tree/main/code) directory passing the dataset's path as argument
 
