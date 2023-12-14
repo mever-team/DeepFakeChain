@@ -10,7 +10,7 @@ __pycache__/
 code/inputs/index/
 code/datasets/*/*
 !code/datasets/*/preprocess.py
-!code/datasets/*/readme.md
+!code/datasets/*/README.md
 code/models/*
 !code/models/.keep
 code/outputs/*
