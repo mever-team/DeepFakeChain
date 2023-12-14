@@ -11,9 +11,9 @@ Further details can be found in the paper.
 
 The code has the following structure:
 
-  **`datasets`**: contains the datasets used for training and evaluation. In our paper, we consider *FaceForensics++*  for training and testing, as well as *CelebDF*, *DFDCpreview*, *DFDC*, and *OpenForensics* for cross-domain evaluation. The datasets must be downloaded and preprocessed before running the model training and evaluation scripts. Specific instructions for each dataset can be found in the respective folder.
+  **`datasets`**: contains the datasets used for training and evaluation. In our paper, we consider *FaceForensics++*  for training and testing, as well as *CelebDF*, *DFDCpreview*, *DFDC*, and *OpenForensics* for cross-domain evaluation. Before training and evaluation, the above datasets must be downloaded and preprocessed, specific instructions for which can be found in each dataset's folder.
   
-**`inputs`**: contains code for handling different datasets. The `sources.py` generates the image paths and labels for each dataset, while the `datasets.py`  encapsulates all data in the ImagePathDataset (a PyTorch Dataset module), which allows handling all datasets uniformly.
+**`inputs`**: contains code for handling different datasets. The file `sources.py` generates the image paths and labels for each dataset, while `datasets.py`  encapsulates all data in the ImagePathDataset (a PyTorch Dataset module), which allows handling all datasets uniformly.
 
  **`experiments`**: contains the definitions of the PyTorch model architectures. The `single_model` package defines the base models that are used in the ensembles, for either detection or attribution. The `ensemble_avgpool` package defines an ensemble that averages the outputs of its models, which is used in the binary and multiclass ensembles. The `ensemble_maxpool` package defines an ensemble that selects the manipulation with the highest score, which is used in the one-vs-real and one-vs-rest ensembles.
 
@@ -21,5 +21,5 @@ The code has the following structure:
 
  **`scripts`**: contains the scripts for dataset preprocessing, model training, and generating the results of our paper. **All scripts must be executed from the [code](https://github.com/mever-team/DeepFakeChain/tree/main/code) directory.**
 
-**`outputs`**: stores the results of the scripts as text files.
+**`outputs`**: stores the results of the scripts as text files. The results are formatted as a tab-separated csv file with columns *task, dataset, mode, model name, balanced accuracy*
 
